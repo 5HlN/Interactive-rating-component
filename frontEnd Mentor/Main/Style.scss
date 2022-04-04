@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+$orange : hsl(25, 97%, 53%);
+$white: hsl(0, 0%, 100%);
+$lightGrey : hsl(217, 12%, 63%);
+$mediumGrey : hsl(216, 12%, 54%);
+$darkBlue : hsl(213, 19%, 18%);
+$veryDarkBlue : hsl(216, 12%, 8%);
+
+@mixin flexCenter($direction) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
+}
+
+html {
+    background-color: $veryDarkBlue;
+    
+    body {
+        @include flexCenter(column);
+        font-family: 'Overpass', sans-serif;
+        height: 100vh;
+    }
+}
+
+#submitCtn {
+    display: grid;
+    grid-template-rows: 60px auto 80px 80px;
+    width: 450px;
+    height: 450px;
+    padding: 25px;
+    color: white;
+    border-radius: 7%;
+    background-image: radial-gradient(farthest-side at 230px 1px, hsl(212, 22%, 15%), hsl(200, 16%, 11%));
+    box-shadow: 5px 5px 10px black;
+
+    svg {
+        padding: 11px;
+        border-radius: 50%;
+        background-color: $darkBlue;
+    }
+
+    #StxtCtn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        h1 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            color: $lightGrey;
+        }
+    }
+
+    #values {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        
+        .rateNmbers {
+            @include flexCenter(row);
+            width: 50px;
+            height: 50px;
+            color: $lightGrey;    
+            font-size: 20px;
+            border-radius: 50%;
+            background-color: $darkBlue;
+            cursor: pointer;
+        }
+
+        :hover {
+            background-color: $lightGrey;
+            color: $white;
+        }
+
+        :active {
+            background-color: $orange;
+            color: $white;
+        }
+    }
+
+    #submitBtn {
+        align-self: center;
+        justify-self: center;
+        width: 90%;
+        height: 50px;
+        border: none;
+        color: $white;
+        font-size: 17px;
+        letter-spacing: 1.5px;
+        border-radius: 50px;
+        background-color: $orange;
+        cursor: pointer;
+    }
+
+    #submitBtn:active {
+        background-color: white;
+        color: orange;
+    }
+
+
+}
+
+#submitCtn:hover {
+    transform: scale(1.01);  
+    // box-shadow: 3px 3px 20px hsla(25, 97%, 53%,.2),
+    // -3px -3px 20px  hsla(25, 97%, 53%,.2);
+}
+
+#thxCtn {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 150px auto 150px;
+    width: 425px;
+    height: 425px;
+    padding: 20px;
+    border-radius: 7%;
+    background-image: radial-gradient(farthest-side at 230px 1px, hsl(212, 24%, 14%), hsl(198, 21%, 9%));
+    z-index: 2;
+
+    #valueCtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 222px;
+        height: 30px;
+        border-radius: 50px;
+        background-color: $darkBlue;
+
+        p {
+            
+            font-size: 16px;
+            color: rgba(255, 166, 0,.8);
+        }
+    }
+
+    #VtxtCtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        
+        h1 {
+            font-size: 35px;
+            color: $white;
+        }
+        
+        p {
+            text-align: center;
+            font-size: 16px;
+            color: $lightGrey;
+        }
+    }
+}
+
+#thxCtn:hover {
+    box-shadow: 5px 5px 10px rgba(255, 255, 255,.2),
+    -5px -5px 10px rgba(255, 255, 255,.2);
+}
+
+.attribution {
+    position: absolute;
+    bottom: 1px;
+    font-size: 13px;
+    color: $lightGrey;
+    z-index: -1;
+
+    a {
+        color: $orange;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #submitCtn {
+        grid-template-rows: 60px auto 80px 80px;
+        width: 350px;
+        height: 450px;
+        padding: 25px;
+        border-radius: 7%;
+    
+        svg {
+            transform: scale(0.9);
+        }
+    
+        #txtCtn {
+            gap: 10px;
+    
+            h1 {
+                font-size: 25px;
+            }
+    
+            p {
+                font-size: 14px;
+            }
+        }
+    
+        #values {
+
+            .rateNmbers {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                border-radius: 50%;
+            }
+        }
+    
+        #submitBtn {
+            width: 90%;
+            height: 40px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+        }
+    }
+
+    #thxCtn {
+        grid-template-rows: 100px auto 100px;
+        width: 325px;
+        height: 325px;
+        padding: 20px;
+
+        svg {
+            transform: scale(0.8);
+        }
+    
+        #valueCtn {
+            width: 200px;
+            height: 25px;
+    
+            p {
+                
+                font-size: 14px;
+            }
+        }
+    
+        #VtxtCtn {
+            gap: 10px;
+            
+            h1 {
+                font-size: 27px;
+            }
+            
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+}
